@@ -7,13 +7,13 @@
 
 import Foundation
 
-public protocol ViewConfigure {
+public protocol ViewConfigureProtocol {
     func buildHierarchy()
     func setupConstraints()
     func configureViews()
 }
 
-extension ViewConfigure {
+extension ViewConfigureProtocol {
     func configureViews() {
         buildHierarchy()
         setupConstraints()

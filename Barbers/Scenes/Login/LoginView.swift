@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class LoginView: UIView, ViewConfigure {
+class LoginView: UIView, ViewConfigureProtocol {
     
     lazy var stackView: UIStackView = {
         let stackView = UIStackView(frame: .zero)
@@ -48,6 +48,8 @@ class LoginView: UIView, ViewConfigure {
         loginButton.setTitleColor(UIColor.black, for: UIControl.State.normal)
         loginButton.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .bold)
         
+        
+        
         return loginButton
     }()
     
@@ -64,13 +66,13 @@ class LoginView: UIView, ViewConfigure {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+
         configureViews()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
     
     func buildHierarchy() {
         addSubview(stackView)
@@ -103,5 +105,6 @@ class LoginView: UIView, ViewConfigure {
             
         ])
     }
+    
 }
 
