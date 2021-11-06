@@ -8,28 +8,17 @@
 import UIKit
 
 class LoginViewController: UIViewController {
-
-    var loginView: LoginView = {
-        let loginView = LoginView()
-        
-        return loginView
-    }()
     
-    init(loginView: LoginView) {
-        self.loginView = loginView
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+    var loginScreen: LoginView?
     
     override func loadView() {
-        self.view = loginView
+        self.loginScreen = LoginView()
+        self.view = loginScreen
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.loginScreen?.configDelegate(delegate: self)
         self.view.backgroundColor = .black
     }
     
@@ -39,14 +28,11 @@ class LoginViewController: UIViewController {
     }
 
 }
-
-extension LoginViewController: LoginViewControllerProtocol {
-    func didTapButton() {
-        let rootVc =  ReservationViewController()
-        let navVc = UINavigationController(rootViewController: rootVc)
-        navVc.modalPresentationStyle = .fullScreen
-        present(navVc, animated: true)
-    }
     
+extension LoginViewController : LoginViewProtocol {
+    func actionLoginButton() {
+        let vc : ReservationViewController = ReservationViewController()
+        self.navigationController?.pushViewController(vc, animated: false)
+    }
     
 }

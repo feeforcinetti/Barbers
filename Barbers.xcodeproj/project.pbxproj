@@ -18,7 +18,7 @@
 		71AE7C37270C91E2001CE504 /* BarbersUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AE7C36270C91E2001CE504 /* BarbersUITests.swift */; };
 		71AE7C46270C9516001CE504 /* ViewConfigProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AE7C45270C9516001CE504 /* ViewConfigProtocol.swift */; };
 		71AE7C4D270C9C7F001CE504 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AE7C4C270C9C7F001CE504 /* LoginView.swift */; };
-		71B292FB2711062F00CD94A5 /* LoginViewControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B292FA2711062F00CD94A5 /* LoginViewControllerProtocol.swift */; };
+		71BDC40E2735B1A90038A72E /* ItemButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BDC40D2735B1A90038A72E /* ItemButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,7 +56,7 @@
 		71AE7C38270C91E2001CE504 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		71AE7C45270C9516001CE504 /* ViewConfigProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewConfigProtocol.swift; sourceTree = "<group>"; };
 		71AE7C4C270C9C7F001CE504 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
-		71B292FA2711062F00CD94A5 /* LoginViewControllerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerProtocol.swift; sourceTree = "<group>"; };
+		71BDC40D2735B1A90038A72E /* ItemButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,7 +147,6 @@
 			isa = PBXGroup;
 			children = (
 				71AE7C45270C9516001CE504 /* ViewConfigProtocol.swift */,
-				71B292FA2711062F00CD94A5 /* LoginViewControllerProtocol.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -155,6 +154,7 @@
 		71AE7C47270C9AAA001CE504 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				71BDC40B2735AE9F0038A72E /* Components */,
 				71462F9127109B8C00B9BAE1 /* Reservation */,
 				71AE7C4B270C9BA7001CE504 /* Login */,
 			);
@@ -186,6 +186,22 @@
 				71AE7C4C270C9C7F001CE504 /* LoginView.swift */,
 			);
 			path = Login;
+			sourceTree = "<group>";
+		};
+		71BDC40B2735AE9F0038A72E /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				71BDC40C2735AEAC0038A72E /* ItemButton */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		71BDC40C2735AEAC0038A72E /* ItemButton */ = {
+			isa = PBXGroup;
+			children = (
+				71BDC40D2735B1A90038A72E /* ItemButton.swift */,
+			);
+			path = ItemButton;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -319,11 +335,11 @@
 			files = (
 				71AE7C19270C91DB001CE504 /* LoginViewController.swift in Sources */,
 				71AE7C46270C9516001CE504 /* ViewConfigProtocol.swift in Sources */,
-				71B292FB2711062F00CD94A5 /* LoginViewControllerProtocol.swift in Sources */,
 				71AE7C15270C91DB001CE504 /* AppDelegate.swift in Sources */,
 				71AE7C4D270C9C7F001CE504 /* LoginView.swift in Sources */,
 				71AE7C17270C91DB001CE504 /* SceneDelegate.swift in Sources */,
 				71462F9527109BF700B9BAE1 /* ReservationViewController.swift in Sources */,
+				71BDC40E2735B1A90038A72E /* ItemButton.swift in Sources */,
 				71462F9327109BD200B9BAE1 /* ReservationView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

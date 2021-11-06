@@ -9,22 +9,46 @@ import UIKit
 
 class ReservationViewController: UIViewController {
 
-    private var reservationView: ReservationView? 
+    private var reservationView: ReservationView?
+    private var itemButton = ItemButton()
+    
+    
+    override func loadView() {
+        self.reservationView = ReservationView()
+        self.view = reservationView
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.setupNavBar()
+        self.itemButton.configDelegateItemButton(delegate: self)
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    private func setupNavBar() {
+        navigationController?.isNavigationBarHidden = false
+    
+        let searchButton = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(self.rightBarButton))
+        searchButton.tintColor = .white
+        
+        let menuButton = UIBarButtonItem(customView: itemButton.buttonMenu)
+        
+        navigationItem.hidesBackButton = true
+        navigationItem.leftBarButtonItem = menuButton
+        navigationItem.rightBarButtonItem = searchButton
+        
     }
-    */
+    
+    @objc func rightBarButton() {
+        
+    }
+ 
+}
 
+extension ReservationViewController: ItemButtonProtocol {
+    func didTappedButton() {
+        let vc: UIViewController = UIViewController()
+        navigationController?.pushViewController(vc, animated: false)
+    }
+    
+    
 }
