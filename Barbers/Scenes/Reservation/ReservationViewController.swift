@@ -46,8 +46,10 @@ class ReservationViewController: UIViewController {
 
 extension ReservationViewController: ItemButtonProtocol {
     func didTappedButton() {
-        let vc: UIViewController = UIViewController()
+        let vc = UIViewController()
         navigationController?.pushViewController(vc, animated: false)
+        
+        
     }
     
     

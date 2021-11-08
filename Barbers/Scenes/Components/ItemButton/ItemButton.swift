@@ -20,18 +20,19 @@ class ItemButton: UIView, ViewConfigureProtocol {
     }
 
     lazy var buttonMenu: UIButton = {
-        let button = UIButton()
+        let button = UIButton(type: .custom)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setImage(UIImage(named: "menu"), for: .normal)
         button.tintColor = .white
         button.imageView?.contentMode = .scaleAspectFit
-        button.sizeToFit()
         button.addTarget(self, action: #selector(self.didTappedButton), for: .touchUpInside)
         return button
     }()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
+        self.configureViews()
+        
     }
     
     required init?(coder: NSCoder) {
@@ -53,6 +54,9 @@ class ItemButton: UIView, ViewConfigureProtocol {
             self.buttonMenu.bottomAnchor.constraint(equalTo: self.bottomAnchor),
             self.buttonMenu.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             self.buttonMenu.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            
+            self.buttonMenu.widthAnchor.constraint(equalToConstant: 30),
+            self.buttonMenu.heightAnchor.constraint(equalTo: buttonMenu.widthAnchor)
             
         ])
     }
