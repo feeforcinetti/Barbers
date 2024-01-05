@@ -2,16 +2,7 @@
   "images" : [
     {
       "filename" : "menu-icon-png-3-lines-11552739310fjzs2n2wxt.png",
-      "idiom" : "universal",
-      "scale" : "1x"
-    },
-    {
-      "idiom" : "universal",
-      "scale" : "2x"
-    },
-    {
-      "idiom" : "universal",
-      "scale" : "3x"
+      "idiom" : "universal"
     }
   ],
   "info" : {

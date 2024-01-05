@@ -156,7 +156,6 @@ class ReservationView: UIView, ViewConfigureProtocol {
         return button
     }()
     
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.configureViews()
@@ -165,68 +164,65 @@ class ReservationView: UIView, ViewConfigureProtocol {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-   
     
     func buildHierarchy() {
 
-        self.addSubview(self.HelloLabel)
-        self.addSubview(self.nameLabel)
-        self.addSubview(self.dividerView)
-        self.addSubview(self.servicesLabel)
-        self.addSubview(self.stackView)
-        self.stackView.addArrangedSubview(self.stackViewTop)
-        self.stackView.addArrangedSubview(self.stackViewBotton)
-        self.stackViewTop.addArrangedSubview(self.buttonShaving)
-        self.stackViewTop.addArrangedSubview(self.buttonHairWashing)
-        self.stackViewBotton.addArrangedSubview(self.buttonHairCare)
-        self.stackViewBotton.addArrangedSubview(self.buttonBeardTrimming)
-        self.addSubview(self.reservationButton)
+        addSubview(HelloLabel)
+        addSubview(nameLabel)
+        addSubview(dividerView)
+        addSubview(servicesLabel)
+        addSubview(stackView)
+        stackView.addArrangedSubview(stackViewTop)
+        stackView.addArrangedSubview(stackViewBotton)
+        stackViewTop.addArrangedSubview(buttonShaving)
+        stackViewTop.addArrangedSubview(buttonHairWashing)
+        stackViewBotton.addArrangedSubview(buttonHairCare)
+        stackViewBotton.addArrangedSubview(buttonBeardTrimming)
+        addSubview(reservationButton)
     }
+    
     func setupConstraints() {
         NSLayoutConstraint.activate([
             
-            self.HelloLabel.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 40),
-            self.HelloLabel.leadingAnchor.constraint(equalTo: self.servicesLabel.leadingAnchor),
+            HelloLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 40),
+            HelloLabel.leadingAnchor.constraint(equalTo: servicesLabel.leadingAnchor),
             
-            self.nameLabel.topAnchor.constraint(equalTo: self.HelloLabel.bottomAnchor, constant: 8),
-            self.nameLabel.leadingAnchor.constraint(equalTo: self.servicesLabel.leadingAnchor),
+            nameLabel.topAnchor.constraint(equalTo: HelloLabel.bottomAnchor, constant: 8),
+            nameLabel.leadingAnchor.constraint(equalTo: servicesLabel.leadingAnchor),
             
+            dividerView.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 8),
+            dividerView.leadingAnchor.constraint(equalTo: buttonShaving.leadingAnchor),
+            dividerView.trailingAnchor.constraint(equalTo: buttonHairWashing.trailingAnchor),
+            dividerView.heightAnchor.constraint(equalToConstant: 1),
             
-            self.dividerView.topAnchor.constraint(equalTo: self.nameLabel.bottomAnchor, constant: 8),
-            self.dividerView.leadingAnchor.constraint(equalTo: self.buttonShaving.leadingAnchor),
-            self.dividerView.trailingAnchor.constraint(equalTo: self.buttonHairWashing.trailingAnchor),
-            self.dividerView.heightAnchor.constraint(equalToConstant: 1),
+            servicesLabel.topAnchor.constraint(equalTo: dividerView.bottomAnchor, constant: 40),
+            servicesLabel.leadingAnchor.constraint(equalTo: buttonShaving.leadingAnchor),
+            servicesLabel.bottomAnchor.constraint(equalTo: stackView.topAnchor, constant: -10),
             
-            self.servicesLabel.topAnchor.constraint(equalTo: self.dividerView.bottomAnchor, constant: 40),
-            self.servicesLabel.leadingAnchor.constraint(equalTo: self.buttonShaving.leadingAnchor),
-            self.servicesLabel.bottomAnchor.constraint(equalTo: self.stackView.topAnchor, constant: -10),
+            stackView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            stackView.leadingAnchor.constraint(equalTo: leadingAnchor),
             
-            self.stackView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            self.stackView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            
-            self.stackViewTop.topAnchor.constraint(equalTo: self.stackView.topAnchor, constant: 20),
-            self.stackViewTop.leadingAnchor.constraint(equalTo: self.stackView.leadingAnchor, constant: 20),
-            self.stackViewTop.trailingAnchor.constraint(equalTo: self.stackView.trailingAnchor, constant: -20),
+            stackViewTop.topAnchor.constraint(equalTo: stackView.topAnchor, constant: 20),
+            stackViewTop.leadingAnchor.constraint(equalTo: stackView.leadingAnchor, constant: 20),
+            stackViewTop.trailingAnchor.constraint(equalTo: stackView.trailingAnchor, constant: -20),
 
-            self.stackViewBotton.leadingAnchor.constraint(equalTo: self.stackViewTop.leadingAnchor),
-            self.stackViewBotton.trailingAnchor.constraint(equalTo: self.stackViewTop.trailingAnchor),
-            self.stackViewBotton.bottomAnchor.constraint(equalTo: self.stackView.bottomAnchor, constant: -20),
+            stackViewBotton.leadingAnchor.constraint(equalTo: stackViewTop.leadingAnchor),
+            stackViewBotton.trailingAnchor.constraint(equalTo: stackViewTop.trailingAnchor),
+            stackViewBotton.bottomAnchor.constraint(equalTo: stackView.bottomAnchor, constant: -20),
             
-            self.buttonShaving.topAnchor.constraint(equalTo: self.stackView.topAnchor, constant: 20),
-            self.buttonShaving.heightAnchor.constraint(equalToConstant: 125),
-            self.buttonShaving.widthAnchor.constraint(equalToConstant: 125),
-            self.buttonShaving.bottomAnchor.constraint(equalTo: self.buttonHairCare.topAnchor, constant: -20),
+            buttonShaving.topAnchor.constraint(equalTo: stackView.topAnchor, constant: 20),
+            buttonShaving.heightAnchor.constraint(equalToConstant: 125),
+            buttonShaving.widthAnchor.constraint(equalToConstant: 125),
+            buttonShaving.bottomAnchor.constraint(equalTo: buttonHairCare.topAnchor, constant: -20),
             
-            self.buttonHairCare.heightAnchor.constraint(equalToConstant: 125),
-            self.buttonHairCare.widthAnchor.constraint(equalToConstant: 125),
-            self.buttonHairCare.bottomAnchor.constraint(equalTo: self.stackView.bottomAnchor, constant: -20),
+            buttonHairCare.heightAnchor.constraint(equalToConstant: 125),
+            buttonHairCare.widthAnchor.constraint(equalToConstant: 125),
+            buttonHairCare.bottomAnchor.constraint(equalTo: stackView.bottomAnchor, constant: -20),
             
-            self.reservationButton.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            self.reservationButton.heightAnchor.constraint(equalToConstant: 45),
-            self.reservationButton.widthAnchor.constraint(equalToConstant: 280),
-            self.reservationButton.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor, constant: -30)
-            
+            reservationButton.centerXAnchor.constraint(equalTo: centerXAnchor),
+            reservationButton.heightAnchor.constraint(equalToConstant: 45),
+            reservationButton.widthAnchor.constraint(equalToConstant: 280),
+            reservationButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -30)
         ])
     }
-    
 }

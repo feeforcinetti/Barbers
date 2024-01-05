@@ -7,8 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7120B5072A66B78700C1BF30 /* ViewMakers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7120B5062A66B78700C1BF30 /* ViewMakers.swift */; };
 		71462F9327109BD200B9BAE1 /* ReservationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71462F9227109BD200B9BAE1 /* ReservationView.swift */; };
 		71462F9527109BF700B9BAE1 /* ReservationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71462F9427109BF700B9BAE1 /* ReservationViewController.swift */; };
+		714B8C9B2B48831800BF1E36 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714B8C9A2B48831800BF1E36 /* Coordinator.swift */; };
+		714B8C9D2B4883E100BF1E36 /* LoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714B8C9C2B4883E100BF1E36 /* LoginCoordinator.swift */; };
+		714B8CA12B48861E00BF1E36 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714B8CA02B48861E00BF1E36 /* MainCoordinator.swift */; };
 		71AE7C15270C91DB001CE504 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AE7C14270C91DB001CE504 /* AppDelegate.swift */; };
 		71AE7C17270C91DB001CE504 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AE7C16270C91DB001CE504 /* SceneDelegate.swift */; };
 		71AE7C19270C91DB001CE504 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AE7C18270C91DB001CE504 /* LoginViewController.swift */; };
@@ -39,8 +43,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7120B5062A66B78700C1BF30 /* ViewMakers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewMakers.swift; sourceTree = "<group>"; };
 		71462F9227109BD200B9BAE1 /* ReservationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationView.swift; sourceTree = "<group>"; };
 		71462F9427109BF700B9BAE1 /* ReservationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationViewController.swift; sourceTree = "<group>"; };
+		714B8C9A2B48831800BF1E36 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		714B8C9C2B4883E100BF1E36 /* LoginCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCoordinator.swift; sourceTree = "<group>"; };
+		714B8CA02B48861E00BF1E36 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		71AE7C11270C91DB001CE504 /* Barbers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Barbers.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		71AE7C14270C91DB001CE504 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		71AE7C16270C91DB001CE504 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -93,6 +101,22 @@
 			path = Reservation;
 			sourceTree = "<group>";
 		};
+		714B8C9E2B48856100BF1E36 /* LoginCoordinator */ = {
+			isa = PBXGroup;
+			children = (
+				714B8C9C2B4883E100BF1E36 /* LoginCoordinator.swift */,
+			);
+			path = LoginCoordinator;
+			sourceTree = "<group>";
+		};
+		714B8C9F2B48857C00BF1E36 /* Makers */ = {
+			isa = PBXGroup;
+			children = (
+				7120B5062A66B78700C1BF30 /* ViewMakers.swift */,
+			);
+			path = Makers;
+			sourceTree = "<group>";
+		};
 		71AE7C08270C91DB001CE504 = {
 			isa = PBXGroup;
 			children = (
@@ -121,6 +145,7 @@
 				71AE7C47270C9AAA001CE504 /* Scenes */,
 				71AE7C44270C9501001CE504 /* Protocols */,
 				71AE7C22270C91E1001CE504 /* Info.plist */,
+				714B8CA02B48861E00BF1E36 /* MainCoordinator.swift */,
 			);
 			path = Barbers;
 			sourceTree = "<group>";
@@ -147,6 +172,7 @@
 			isa = PBXGroup;
 			children = (
 				71AE7C45270C9516001CE504 /* ViewConfigProtocol.swift */,
+				714B8C9A2B48831800BF1E36 /* Coordinator.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -154,6 +180,7 @@
 		71AE7C47270C9AAA001CE504 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				714B8C9F2B48857C00BF1E36 /* Makers */,
 				71BDC40B2735AE9F0038A72E /* Components */,
 				71462F9127109B8C00B9BAE1 /* Reservation */,
 				71AE7C4B270C9BA7001CE504 /* Login */,
@@ -182,6 +209,7 @@
 		71AE7C4B270C9BA7001CE504 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				714B8C9E2B48856100BF1E36 /* LoginCoordinator */,
 				71AE7C18270C91DB001CE504 /* LoginViewController.swift */,
 				71AE7C4C270C9C7F001CE504 /* LoginView.swift */,
 			);
@@ -334,13 +362,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				71AE7C19270C91DB001CE504 /* LoginViewController.swift in Sources */,
+				714B8CA12B48861E00BF1E36 /* MainCoordinator.swift in Sources */,
 				71AE7C46270C9516001CE504 /* ViewConfigProtocol.swift in Sources */,
 				71AE7C15270C91DB001CE504 /* AppDelegate.swift in Sources */,
 				71AE7C4D270C9C7F001CE504 /* LoginView.swift in Sources */,
+				714B8C9D2B4883E100BF1E36 /* LoginCoordinator.swift in Sources */,
 				71AE7C17270C91DB001CE504 /* SceneDelegate.swift in Sources */,
+				714B8C9B2B48831800BF1E36 /* Coordinator.swift in Sources */,
 				71462F9527109BF700B9BAE1 /* ReservationViewController.swift in Sources */,
 				71BDC40E2735B1A90038A72E /* ItemButton.swift in Sources */,
 				71462F9327109BD200B9BAE1 /* ReservationView.swift in Sources */,
+				7120B5072A66B78700C1BF30 /* ViewMakers.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

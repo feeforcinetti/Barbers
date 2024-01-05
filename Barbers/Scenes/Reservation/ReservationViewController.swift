@@ -12,7 +12,6 @@ class ReservationViewController: UIViewController {
     private var reservationView: ReservationView?
     private var itemButton = ItemButton()
     
-    
     override func loadView() {
         self.reservationView = ReservationView()
         self.view = reservationView
@@ -31,26 +30,21 @@ class ReservationViewController: UIViewController {
         searchButton.tintColor = .white
         
         let menuButton = UIBarButtonItem(customView: itemButton.buttonMenu)
-        
         navigationItem.hidesBackButton = true
         navigationItem.leftBarButtonItem = menuButton
         navigationItem.rightBarButtonItem = searchButton
-        
     }
     
     @objc func rightBarButton() {
         
     }
- 
 }
 
 extension ReservationViewController: ItemButtonProtocol {
     func didTappedButton() {
         let vc = UIViewController()
-        navigationController?.pushViewController(vc, animated: false)
-        
-        
+        vc.view.backgroundColor = .systemGray
+        vc.modalPresentationStyle = .automatic
+        present(vc, animated: true)
     }
-    
-    
 }

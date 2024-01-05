@@ -9,7 +9,7 @@ import UIKit
 
 class LoginViewController: UIViewController {
     
-    var loginScreen: LoginView?
+    private var loginScreen: LoginView?
     
     override func loadView() {
         self.loginScreen = LoginView()
