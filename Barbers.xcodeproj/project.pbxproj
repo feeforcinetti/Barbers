@@ -13,6 +13,7 @@
 		714B8C9B2B48831800BF1E36 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714B8C9A2B48831800BF1E36 /* Coordinator.swift */; };
 		714B8C9D2B4883E100BF1E36 /* LoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714B8C9C2B4883E100BF1E36 /* LoginCoordinator.swift */; };
 		714B8CA12B48861E00BF1E36 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714B8CA02B48861E00BF1E36 /* MainCoordinator.swift */; };
+		715F279E2B48A1F20009885A /* ReservationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715F279D2B48A1F20009885A /* ReservationCoordinator.swift */; };
 		71AE7C15270C91DB001CE504 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AE7C14270C91DB001CE504 /* AppDelegate.swift */; };
 		71AE7C17270C91DB001CE504 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AE7C16270C91DB001CE504 /* SceneDelegate.swift */; };
 		71AE7C19270C91DB001CE504 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AE7C18270C91DB001CE504 /* LoginViewController.swift */; };
@@ -49,6 +50,7 @@
 		714B8C9A2B48831800BF1E36 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		714B8C9C2B4883E100BF1E36 /* LoginCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCoordinator.swift; sourceTree = "<group>"; };
 		714B8CA02B48861E00BF1E36 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
+		715F279D2B48A1F20009885A /* ReservationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationCoordinator.swift; sourceTree = "<group>"; };
 		71AE7C11270C91DB001CE504 /* Barbers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Barbers.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		71AE7C14270C91DB001CE504 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		71AE7C16270C91DB001CE504 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -95,6 +97,7 @@
 		71462F9127109B8C00B9BAE1 /* Reservation */ = {
 			isa = PBXGroup;
 			children = (
+				715F279C2B48A1DB0009885A /* ReservationCoordinator */,
 				71462F9427109BF700B9BAE1 /* ReservationViewController.swift */,
 				71462F9227109BD200B9BAE1 /* ReservationView.swift */,
 			);
@@ -115,6 +118,14 @@
 				7120B5062A66B78700C1BF30 /* ViewMakers.swift */,
 			);
 			path = Makers;
+			sourceTree = "<group>";
+		};
+		715F279C2B48A1DB0009885A /* ReservationCoordinator */ = {
+			isa = PBXGroup;
+			children = (
+				715F279D2B48A1F20009885A /* ReservationCoordinator.swift */,
+			);
+			path = ReservationCoordinator;
 			sourceTree = "<group>";
 		};
 		71AE7C08270C91DB001CE504 = {
@@ -368,6 +379,7 @@
 				71AE7C4D270C9C7F001CE504 /* LoginView.swift in Sources */,
 				714B8C9D2B4883E100BF1E36 /* LoginCoordinator.swift in Sources */,
 				71AE7C17270C91DB001CE504 /* SceneDelegate.swift in Sources */,
+				715F279E2B48A1F20009885A /* ReservationCoordinator.swift in Sources */,
 				714B8C9B2B48831800BF1E36 /* Coordinator.swift in Sources */,
 				71462F9527109BF700B9BAE1 /* ReservationViewController.swift in Sources */,
 				71BDC40E2735B1A90038A72E /* ItemButton.swift in Sources */,

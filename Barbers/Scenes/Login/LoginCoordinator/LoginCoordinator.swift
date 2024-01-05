@@ -15,11 +15,19 @@ class LoginCoordinator: Coordinator {
     init(window: UIWindow, presenter: UINavigationController) {
         self.window = window
         self.presenter = presenter
-        window.makeKeyAndVisible()
     }
     
     func start() {
-        let viewController = LoginViewController()
-        presenter.pushViewController(viewController, animated: false)
+        let loginViewControlle = LoginViewController(delegate: self)
+        presenter.pushViewController(loginViewControlle, animated: true)
+        window.makeKeyAndVisible()
+    }
+}
+
+extension LoginCoordinator: LoginCoordinatorDelegate {
+    func goToReservationScreen() {
+        print("delegate disparado!")
+        let coordinator = ReservationCoordinator(presenter: presenter)
+        coordinator.start()
     }
 }

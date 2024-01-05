@@ -11,6 +11,7 @@ final class MainCoordinator: Coordinator {
     
     let window: UIWindow
     var presenter: UINavigationController
+    private var loginCoordinator: LoginCoordinator?
     
     init(window: UIWindow, presenter: UINavigationController) {
         self.window = window
@@ -21,5 +22,6 @@ final class MainCoordinator: Coordinator {
     func start() {
         let loginCoordinator = LoginCoordinator(window: window, presenter: presenter)
         loginCoordinator.start()
+        self.loginCoordinator = loginCoordinator
     }
 }

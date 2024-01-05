@@ -7,32 +7,48 @@
 
 import UIKit
 
+protocol LoginCoordinatorDelegate: AnyObject {
+    func goToReservationScreen()
+}
+
 class LoginViewController: UIViewController {
     
-    private var loginScreen: LoginView?
+    //MARK: Variables
+    private unowned var loginScreen: LoginView { return self.view as! LoginView }
+    private weak var delegate: LoginCoordinatorDelegate?
     
+    //MARK: Init
+    init(delegate: LoginCoordinatorDelegate) {
+        self.delegate = delegate
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    //MARK: Life Cycle
     override func loadView() {
-        self.loginScreen = LoginView()
-        self.view = loginScreen
+        self.view = LoginView()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.loginScreen?.configDelegate(delegate: self)
+        self.loginScreen.configDelegate(delegate: self)
         self.view.backgroundColor = .black
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-        self.navigationController?.isNavigationBarHidden = true
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
     }
 
 }
     
 extension LoginViewController : LoginViewProtocol {
+    
     func actionLoginButton() {
-        let vc : ReservationViewController = ReservationViewController()
-        self.navigationController?.pushViewController(vc, animated: false)
+        self.delegate?.goToReservationScreen()
     }
     
 }
