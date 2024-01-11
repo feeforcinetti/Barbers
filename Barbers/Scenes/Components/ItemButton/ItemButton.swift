@@ -15,7 +15,7 @@ class ItemButton: UIView, ViewConfigureProtocol {
     
     var delegate: ItemButtonProtocol?
     
-    func configDelegateItemButton(delegate: ItemButtonProtocol) {
+    func configItemButtonDelegate(delegate: ItemButtonProtocol) {
         self.delegate = delegate
     }
 
@@ -32,7 +32,6 @@ class ItemButton: UIView, ViewConfigureProtocol {
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.configureViews()
-        
     }
     
     required init?(coder: NSCoder) {
@@ -61,5 +60,10 @@ class ItemButton: UIView, ViewConfigureProtocol {
         ])
     }
     
+    func setupButton(image: String, color: UIColor) {
+        let imageButton = UIImage(named: image)
+        buttonMenu.setImage(imageButton, for: .normal)
+        buttonMenu.tintColor = color
+    }
+    
 }
-

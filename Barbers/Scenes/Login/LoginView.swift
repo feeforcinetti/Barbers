@@ -14,7 +14,7 @@ protocol LoginViewProtocol : AnyObject {
 
 class LoginView: UIView, ViewConfigureProtocol {
     
-    var delegate: LoginViewProtocol?
+    weak var delegate: LoginViewProtocol?
     
     func configDelegate(delegate: LoginViewProtocol) {
         self.delegate = delegate

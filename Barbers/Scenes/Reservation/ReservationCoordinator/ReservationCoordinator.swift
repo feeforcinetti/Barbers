@@ -15,8 +15,22 @@ class ReservationCoordinator: Coordinator {
     }
     
     func start() {
-        let viewController = ReservationViewController()
+        let viewController = ReservationViewController(delegate: self)
         presenter.pushViewController(viewController, animated: true)
     }
     
+}
+
+extension ReservationCoordinator: ReservationCoordinatorDelegate {
+    
+    func showMenu() {
+        let viewController = UIViewController()
+        viewController.view.backgroundColor = .systemGray
+        presenter.present(viewController, animated: true)
+    }
+    
+    func goToSelectDateAndHourScreen() {
+        let viewController = SelectDateAndHourViewController()
+        presenter.pushViewController(viewController, animated: true)
+    }
 }

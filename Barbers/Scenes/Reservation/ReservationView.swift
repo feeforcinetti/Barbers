@@ -7,12 +7,14 @@
 
 import Foundation
 import UIKit
-//
-//protocol ReservationViewControllerProtocol: AnyObject {
-//    
-//}
+
+protocol ReservationViewControllerProtocol: AnyObject {
+    func didTapButton()
+}
 
 class ReservationView: UIView, ViewConfigureProtocol {
+    
+    weak var delegate: ReservationViewControllerProtocol?
     
 //    lazy var viewButton: UIImageView = {
 //        let view = UIImageView()
@@ -21,6 +23,7 @@ class ReservationView: UIView, ViewConfigureProtocol {
 //        view.contentMode = .scaleAspectFit
 //        return view
 //    }()
+    lazy var itemButton = ItemButton()
     
     lazy var HelloLabel: UILabel = {
         let label = UILabel()
@@ -152,13 +155,14 @@ class ReservationView: UIView, ViewConfigureProtocol {
         button.setTitle("Reservation Now", for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .bold)
         button.setTitleColor(.black, for: .normal)
-//        loginButton.addTarget(self, action: #selector(), for: .touchUpInside)
+        button.addTarget(self, action: #selector(tappedButton), for: .touchUpInside)
         return button
     }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.configureViews()
+        additionalConfig()
     }
     
     required init?(coder: NSCoder) {
@@ -225,4 +229,14 @@ class ReservationView: UIView, ViewConfigureProtocol {
             reservationButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -30)
         ])
     }
+    
+    func setupDelegate(delegate: ReservationViewControllerProtocol) {
+        self.delegate = delegate
+    }
+    
+    @objc private func tappedButton() {
+        delegate?.didTapButton()
+    }
+    
+    private func additionalConfig() {}
 }

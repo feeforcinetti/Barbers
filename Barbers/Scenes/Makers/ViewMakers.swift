@@ -114,6 +114,7 @@ extension UIButton {
         button.setTitleColor(titleColor, for: .normal)
         button.backgroundColor = backgroundColor
         button.addTarget(target, action: action, for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }
 }
@@ -138,6 +139,7 @@ extension UITableView {
             tableView.register(nibName, forCellReuseIdentifier: identifier)
         }
         
+        tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
     }
 }
@@ -145,16 +147,17 @@ extension UITableView {
 //MARK: - CollectionView
 extension UICollectionView {
     static func collectionView(
-        itemSize: CGSize = CGSize(width: 50, height: 50),
-        estimatedItemSize: CGSize = .zero,
-        minimumInteritemSpacing: CGFloat = 10,
-        minimumLineSpacing: CGFloat = 10,
+        backgroundColor: UIColor = .clear,
+        itemSize: CGSize = CGSize(width: 100, height: 100),
+        estimatedItemSize: CGSize = CGSize(),
+        minimumInteritemSpacing: CGFloat = CGFloat() ,
+        minimumLineSpacing: CGFloat = CGFloat(),
         isScrollEnabled: Bool = true,
         showsVerticalScrollIndicator: Bool = false,
         showsHorizontalScrollIndicator: Bool = false,
-        separatorStyle:UITableViewCell.SeparatorStyle = .none ,
+        separatorStyle:UITableViewCell.SeparatorStyle = .none,
         allowsSelection: Bool = true,
-        cellClass: AnyClass? = nil,
+        registerCell: AnyClass? = nil,
         identifier: String? = nil
     ) -> UICollectionView {
         let layout = UICollectionViewFlowLayout()
@@ -168,11 +171,32 @@ extension UICollectionView {
         collectionView.showsVerticalScrollIndicator = showsVerticalScrollIndicator
         collectionView.showsHorizontalScrollIndicator = showsHorizontalScrollIndicator
         collectionView.allowsSelection = allowsSelection
+        collectionView.backgroundColor = backgroundColor
         
-        if let cellClass, let identifier {
-            collectionView.register(cellClass, forCellWithReuseIdentifier: identifier)
+        if let registerCell, let identifier {
+            collectionView.register(registerCell, forCellWithReuseIdentifier: identifier)
         }
         
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
         return collectionView
+    }
+}
+
+public extension UIDatePicker {
+    static func datePicker(
+        datePickerMode: UIDatePicker.Mode = .dateAndTime,
+        minimumDate: Date? = nil,
+        maximumDate: Date? = nil,
+        datePickerStyle: UIDatePickerStyle = .inline,
+        userInterfaceStyle: UIUserInterfaceStyle = .dark
+    ) -> UIDatePicker {
+        let datePicker = UIDatePicker()
+        datePicker.datePickerMode = datePickerMode
+        datePicker.minimumDate = minimumDate
+        datePicker.maximumDate = maximumDate
+        datePicker.preferredDatePickerStyle = datePickerStyle
+        datePicker.overrideUserInterfaceStyle = userInterfaceStyle
+        datePicker.translatesAutoresizingMaskIntoConstraints = false
+        return datePicker
     }
 }

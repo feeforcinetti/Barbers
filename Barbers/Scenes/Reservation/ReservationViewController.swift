@@ -7,20 +7,34 @@
 
 import UIKit
 
+protocol ReservationCoordinatorDelegate: AnyObject {
+    func showMenu()
+    func goToSelectDateAndHourScreen()
+}
+
 class ReservationViewController: UIViewController {
 
-    private var reservationView: ReservationView?
-    private var itemButton = ItemButton()
+    private unowned var screenView: ReservationView { return self.view as! ReservationView }
+    private weak var delegate: ReservationCoordinatorDelegate?
+    
+    init(delegate: ReservationCoordinatorDelegate) {
+        self.delegate = delegate
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func loadView() {
-        self.reservationView = ReservationView()
-        self.view = reservationView
+        self.view = ReservationView()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.setupNavBar()
-        self.itemButton.configDelegateItemButton(delegate: self)
+        setupNavBar()
+        screenView.itemButton.configItemButtonDelegate(delegate: self)
+        screenView.setupDelegate(delegate: self)
     }
     
     private func setupNavBar() {
@@ -29,7 +43,7 @@ class ReservationViewController: UIViewController {
         let searchButton = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(self.rightBarButton))
         searchButton.tintColor = .white
         
-        let menuButton = UIBarButtonItem(customView: itemButton.buttonMenu)
+        let menuButton = UIBarButtonItem(customView: screenView.itemButton.buttonMenu)
         navigationItem.hidesBackButton = true
         navigationItem.leftBarButtonItem = menuButton
         navigationItem.rightBarButtonItem = searchButton
@@ -42,9 +56,12 @@ class ReservationViewController: UIViewController {
 
 extension ReservationViewController: ItemButtonProtocol {
     func didTappedButton() {
-        let vc = UIViewController()
-        vc.view.backgroundColor = .systemGray
-        vc.modalPresentationStyle = .automatic
-        present(vc, animated: true)
+        self.delegate?.showMenu()
+    }
+}
+
+extension ReservationViewController: ReservationViewControllerProtocol {
+    func didTapButton() {
+        delegate?.goToSelectDateAndHourScreen()
     }
 }

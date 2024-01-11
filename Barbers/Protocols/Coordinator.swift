@@ -7,8 +7,8 @@
 
 import UIKit
 
-public protocol Coordinator {
-    var presenter: UINavigationController { get  set }
+protocol Coordinator: AnyObject {
+    var presenter: UINavigationController { get set }
     
     func start()
 }

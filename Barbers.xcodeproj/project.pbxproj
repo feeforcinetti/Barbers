@@ -14,6 +14,10 @@
 		714B8C9D2B4883E100BF1E36 /* LoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714B8C9C2B4883E100BF1E36 /* LoginCoordinator.swift */; };
 		714B8CA12B48861E00BF1E36 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714B8CA02B48861E00BF1E36 /* MainCoordinator.swift */; };
 		715F279E2B48A1F20009885A /* ReservationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715F279D2B48A1F20009885A /* ReservationCoordinator.swift */; };
+		715F27A12B4F19840009885A /* SelectDateAndHourView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715F27A02B4F19830009885A /* SelectDateAndHourView.swift */; };
+		715F27A32B4F19960009885A /* SelectDateAndHourViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715F27A22B4F19960009885A /* SelectDateAndHourViewController.swift */; };
+		715F27A52B4F621C0009885A /* SelectHairCutViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715F27A42B4F621C0009885A /* SelectHairCutViewCell.swift */; };
+		715F27A82B4F6C090009885A /* HairCutModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715F27A72B4F6C090009885A /* HairCutModel.swift */; };
 		71AE7C15270C91DB001CE504 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AE7C14270C91DB001CE504 /* AppDelegate.swift */; };
 		71AE7C17270C91DB001CE504 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AE7C16270C91DB001CE504 /* SceneDelegate.swift */; };
 		71AE7C19270C91DB001CE504 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AE7C18270C91DB001CE504 /* LoginViewController.swift */; };
@@ -51,6 +55,10 @@
 		714B8C9C2B4883E100BF1E36 /* LoginCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCoordinator.swift; sourceTree = "<group>"; };
 		714B8CA02B48861E00BF1E36 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		715F279D2B48A1F20009885A /* ReservationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationCoordinator.swift; sourceTree = "<group>"; };
+		715F27A02B4F19830009885A /* SelectDateAndHourView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectDateAndHourView.swift; sourceTree = "<group>"; };
+		715F27A22B4F19960009885A /* SelectDateAndHourViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectDateAndHourViewController.swift; sourceTree = "<group>"; };
+		715F27A42B4F621C0009885A /* SelectHairCutViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectHairCutViewCell.swift; sourceTree = "<group>"; };
+		715F27A72B4F6C090009885A /* HairCutModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HairCutModel.swift; sourceTree = "<group>"; };
 		71AE7C11270C91DB001CE504 /* Barbers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Barbers.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		71AE7C14270C91DB001CE504 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		71AE7C16270C91DB001CE504 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -97,6 +105,7 @@
 		71462F9127109B8C00B9BAE1 /* Reservation */ = {
 			isa = PBXGroup;
 			children = (
+				715F279F2B4F19510009885A /* SelectDateAndHour */,
 				715F279C2B48A1DB0009885A /* ReservationCoordinator */,
 				71462F9427109BF700B9BAE1 /* ReservationViewController.swift */,
 				71462F9227109BD200B9BAE1 /* ReservationView.swift */,
@@ -128,6 +137,24 @@
 			path = ReservationCoordinator;
 			sourceTree = "<group>";
 		};
+		715F279F2B4F19510009885A /* SelectDateAndHour */ = {
+			isa = PBXGroup;
+			children = (
+				715F27A42B4F621C0009885A /* SelectHairCutViewCell.swift */,
+				715F27A02B4F19830009885A /* SelectDateAndHourView.swift */,
+				715F27A22B4F19960009885A /* SelectDateAndHourViewController.swift */,
+			);
+			path = SelectDateAndHour;
+			sourceTree = "<group>";
+		};
+		715F27A62B4F6BEC0009885A /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				715F27A72B4F6C090009885A /* HairCutModel.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
 		71AE7C08270C91DB001CE504 = {
 			isa = PBXGroup;
 			children = (
@@ -151,6 +178,7 @@
 		71AE7C13270C91DB001CE504 /* Barbers */ = {
 			isa = PBXGroup;
 			children = (
+				715F27A62B4F6BEC0009885A /* Data */,
 				71AE7C4A270C9B92001CE504 /* AppDelegate */,
 				71AE7C49270C9B17001CE504 /* Resources */,
 				71AE7C47270C9AAA001CE504 /* Scenes */,
@@ -372,15 +400,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				715F27A32B4F19960009885A /* SelectDateAndHourViewController.swift in Sources */,
+				715F27A52B4F621C0009885A /* SelectHairCutViewCell.swift in Sources */,
 				71AE7C19270C91DB001CE504 /* LoginViewController.swift in Sources */,
 				714B8CA12B48861E00BF1E36 /* MainCoordinator.swift in Sources */,
 				71AE7C46270C9516001CE504 /* ViewConfigProtocol.swift in Sources */,
 				71AE7C15270C91DB001CE504 /* AppDelegate.swift in Sources */,
 				71AE7C4D270C9C7F001CE504 /* LoginView.swift in Sources */,
 				714B8C9D2B4883E100BF1E36 /* LoginCoordinator.swift in Sources */,
+				715F27A12B4F19840009885A /* SelectDateAndHourView.swift in Sources */,
 				71AE7C17270C91DB001CE504 /* SceneDelegate.swift in Sources */,
 				715F279E2B48A1F20009885A /* ReservationCoordinator.swift in Sources */,
 				714B8C9B2B48831800BF1E36 /* Coordinator.swift in Sources */,
+				715F27A82B4F6C090009885A /* HairCutModel.swift in Sources */,
 				71462F9527109BF700B9BAE1 /* ReservationViewController.swift in Sources */,
 				71BDC40E2735B1A90038A72E /* ItemButton.swift in Sources */,
 				71462F9327109BD200B9BAE1 /* ReservationView.swift in Sources */,
