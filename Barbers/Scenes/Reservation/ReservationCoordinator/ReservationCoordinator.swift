@@ -30,7 +30,7 @@ extension ReservationCoordinator: ReservationCoordinatorDelegate {
     }
     
     func goToSelectDateAndHourScreen() {
-        let viewController = SelectDateAndHourViewController()
+        let viewController = SchedulingViewController()
         presenter.pushViewController(viewController, animated: true)
     }
 }

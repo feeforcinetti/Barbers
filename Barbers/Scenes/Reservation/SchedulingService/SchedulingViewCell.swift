@@ -1,5 +1,5 @@
 //
-//  SelectHairCutViewCell.swift
+//  SchedulingViewCell.swift
 //  Barbers
 //
 //  Created by Felipe Forcinetti on 10/01/24.
@@ -8,10 +8,10 @@
 import Foundation
 import UIKit
 
-class SelectHairCutViewCell: UICollectionViewCell {
+class SchedulingViewCell: UICollectionViewCell {
     
     //MARK: Constants
-    static let identifier = "SelectHairCutViewCell"
+    static let identifier = "SchedulingViewCell"
     
     //MARK: Variables
     private lazy var hairCutImage: UIImageView = .imageView(imageName: "barba")

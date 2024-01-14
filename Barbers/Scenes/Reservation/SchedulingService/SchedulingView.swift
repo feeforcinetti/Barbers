@@ -1,5 +1,5 @@
 //
-//  SelectDateAndHourView.swift
+//  SchedulingView.swift
 //  Barbers
 //
 //  Created by Felipe Forcinetti on 10/01/24.
@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class SelectDateAndHourView: UIView {
+class SchedulingView: UIView, ViewConfigureProtocol {
     
     //MARK: Init
     override init(frame: CGRect) {
@@ -24,36 +24,35 @@ class SelectDateAndHourView: UIView {
     private lazy var subtitleLabel: UILabel = .label(text: "Reservar",
                                                      textColor: .white,
                                                      fontSize: 24,
-                                                     isBold: true)
+                                                     fontType: .bold)
     
     private lazy var dividerView: UIView = .simpleView(color: .white)
     
-    private lazy var datePicker: UIDatePicker = .datePicker(datePickerMode: .date,
+    private lazy var datePicker: UIDatePicker = .datePicker(datePickerMode: .dateAndTime,
                                                             minimumDate: Date(),
                                                             maximumDate: nil,
                                                             datePickerStyle: .inline)
+    
     private lazy var categoryLabel: UILabel = .label(text: "Categorias",
                                                      textColor: .white,
                                                      fontSize: 24,
-                                                     isBold: true)
+                                                     fontType: .bold)
     
     private lazy var categoryDescriptionLabel: UILabel = .label(text: "Selecione seu tipo de corte",
-                                                     textColor: .white,
-                                                     fontSize: 14,
-                                                     isBold: true)
+                                                                textColor: .white,
+                                                                fontSize: 14,
+                                                                fontType: .bold)
     
     private lazy var dividerViewTwo: UIView = .simpleView(color: .white)
     
-    private lazy var collectionView: UICollectionView = .collectionView(registerCell: SelectHairCutViewCell.self,
-                                                                        identifier: SelectHairCutViewCell.identifier)
+    private lazy var collectionView: UICollectionView = .collectionView(registerCell: SchedulingViewCell.self,
+                                                                        identifier: SchedulingViewCell.identifier)
     //MARK: Setup
     func configCollectionViewDelegate(delegate: UICollectionViewDelegate, dataSource: UICollectionViewDataSource) {
         collectionView.delegate = delegate
         collectionView.dataSource = dataSource
     }
-}
-
-extension SelectDateAndHourView: ViewConfigureProtocol {
+    
     func buildHierarchy() {
         addSubview(subtitleLabel)
         addSubview(dividerView)
@@ -66,7 +65,7 @@ extension SelectDateAndHourView: ViewConfigureProtocol {
     
     func setupConstraints() {
         NSLayoutConstraint.activate([
-        
+            
             subtitleLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 20),
             subtitleLabel.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
             subtitleLabel.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
@@ -79,7 +78,7 @@ extension SelectDateAndHourView: ViewConfigureProtocol {
             datePicker.topAnchor.constraint(equalTo: dividerView.bottomAnchor, constant: 10),
             datePicker.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
             datePicker.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
-                        
+            
             categoryLabel.topAnchor.constraint(equalTo: datePicker.bottomAnchor, constant: 10),
             categoryLabel.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
             categoryLabel.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
@@ -97,8 +96,7 @@ extension SelectDateAndHourView: ViewConfigureProtocol {
             collectionView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
             collectionView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor)
-
+            
         ])
     }
-
 }

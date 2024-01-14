@@ -71,17 +71,19 @@ extension UILabel {
         color: UIColor? = nil,
         textColor: UIColor = .white,
         fontSize: CGFloat = 13,
-        isBold: Bool = false
+        fontType: UIFont.Weight = .medium
     ) -> UILabel {
         let label = UILabel()
         label.text = text
+        label.textColor = textColor
+        label.font = .systemFont(ofSize: fontSize, weight: fontType)
+        label.numberOfLines = 0
+        label.translatesAutoresizingMaskIntoConstraints = false
+        
         if let color {
             label.backgroundColor = color
         }
-        label.textColor = textColor
-        label.font = .systemFont(ofSize: fontSize, weight: isBold ? .bold : .regular)
-        label.numberOfLines = 0
-        label.translatesAutoresizingMaskIntoConstraints = false
+        
         return label
     }
 }
@@ -90,31 +92,46 @@ extension UILabel {
 extension UIButton {
     static func button(
         title: String = "",
+        image: String? = nil,
+        imageColor: UIColor? = .clear,
         cornerRadius: CGFloat? = nil,
+        clipsToBounds: Bool = false,
         borderWidth: CGFloat? = nil,
         borderColor: UIColor? = nil,
-        titleLabel: UIFont? = UIFont.systemFont(ofSize: 12.0),
+        fontSize: CGFloat = 10,
+        weightFont: UIFont.Weight = .regular,
         titleColor: UIColor? = .black,
         backgroundColor: UIColor? = .systemBackground,
-        contentEdgeInsets: UIEdgeInsets? = UIEdgeInsets(top: 20, left: 0, bottom: 20, right: 0),
         target: Any?,
         action: Selector
     ) -> UIButton {
         let button = UIButton(type: .custom)
-                
-        if let cornerRadius, let borderWidth, let borderColor, let contentEdgeInsets {
-            button.layer.cornerRadius = cornerRadius
-            button.layer.borderWidth = borderWidth
-            button.layer.borderColor = borderColor.cgColor
-            button.contentEdgeInsets = contentEdgeInsets
-        }
         
         button.setTitle(title, for: .normal)
-        button.titleLabel?.font = titleLabel
+        button.titleLabel?.font = UIFont.systemFont(ofSize: fontSize, weight: weightFont)
         button.setTitleColor(titleColor, for: .normal)
         button.backgroundColor = backgroundColor
         button.addTarget(target, action: action, for: .touchUpInside)
+        button.clipsToBounds = clipsToBounds
         button.translatesAutoresizingMaskIntoConstraints = false
+        
+        if let cornerRadius = cornerRadius {
+            button.layer.cornerRadius = cornerRadius
+        }
+        
+        if let borderWidth = borderWidth {
+            button.layer.borderWidth = borderWidth
+        }
+        
+        if let borderColor = borderColor {
+            button.layer.borderColor = borderColor.cgColor
+        }
+        
+        if let image = image, let imageColor = imageColor {
+            button.setImage(.image(with: image, in: .main, renderingMode: .alwaysTemplate), for: .normal)
+            button.tintColor = imageColor
+        }
+          
         return button
     }
 }
@@ -135,7 +152,7 @@ extension UITableView {
         tableView.separatorStyle = separatorStyle
         tableView.allowsSelection = allowsSelection
         
-        if let nibName, let identifier {
+        if let nibName = nibName, let identifier = identifier {
             tableView.register(nibName, forCellReuseIdentifier: identifier)
         }
         
@@ -173,7 +190,7 @@ extension UICollectionView {
         collectionView.allowsSelection = allowsSelection
         collectionView.backgroundColor = backgroundColor
         
-        if let registerCell, let identifier {
+        if let registerCell = registerCell, let identifier = identifier {
             collectionView.register(registerCell, forCellWithReuseIdentifier: identifier)
         }
         
@@ -198,5 +215,16 @@ public extension UIDatePicker {
         datePicker.overrideUserInterfaceStyle = userInterfaceStyle
         datePicker.translatesAutoresizingMaskIntoConstraints = false
         return datePicker
+    }
+}
+
+extension UISearchBar {
+    static func searchBar(textColor: UIColor? = .black) -> UISearchBar {
+        let searchBar = UISearchBar()
+        searchBar.searchBarStyle = .minimal
+        searchBar.searchTextField.textColor = textColor
+        searchBar.translatesAutoresizingMaskIntoConstraints = false
+        
+        return searchBar
     }
 }

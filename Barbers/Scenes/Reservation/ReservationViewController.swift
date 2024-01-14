@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Foundation
 
 protocol ReservationCoordinatorDelegate: AnyObject {
     func showMenu()
@@ -34,7 +35,7 @@ class ReservationViewController: UIViewController {
         super.viewDidLoad()
         setupNavBar()
         screenView.itemButton.configItemButtonDelegate(delegate: self)
-        screenView.setupDelegate(delegate: self)
+        screenView.setupDelegate(delegate: self, searchDelegate: self)
     }
     
     private func setupNavBar() {
@@ -50,7 +51,11 @@ class ReservationViewController: UIViewController {
     }
     
     @objc func rightBarButton() {
-        
+        DispatchQueue.main.async {
+            UIView.animate(withDuration: 0.5, delay: 0.1, options: .curveEaseOut) {
+                self.screenView.searchBar.isHidden = !self.screenView.searchBar.isHidden
+            }
+        }
     }
 }
 
@@ -65,3 +70,5 @@ extension ReservationViewController: ReservationViewControllerProtocol {
         delegate?.goToSelectDateAndHourScreen()
     }
 }
+
+extension ReservationViewController: UISearchBarDelegate {}

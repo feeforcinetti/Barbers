@@ -1,5 +1,5 @@
 //
-//  SelectDateAndHourViewController.swift
+//  SchedulingViewController.swift
 //  Barbers
 //
 //  Created by Felipe Forcinetti on 10/01/24.
@@ -8,11 +8,12 @@
 import Foundation
 import UIKit
 
-class SelectDateAndHourViewController: UIViewController {
+class SchedulingViewController: UIViewController {
     
     //MARK: Variables
-    private unowned var screenView: SelectDateAndHourView { return self.view as! SelectDateAndHourView }
+    private unowned var screenView: SchedulingView { return self.view as! SchedulingView }
     var hairCutImage: [HairCutModel] = [HairCutModel(image: "barba"), HairCutModel(image: "barba"), HairCutModel(image: "barba"), HairCutModel(image: "barba"), HairCutModel(image: "barba"), HairCutModel(image: "barba"), HairCutModel(image: "barba")]
+    
     //MARK: Init
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -25,27 +26,24 @@ class SelectDateAndHourViewController: UIViewController {
     //MARK: Life Cycle
     override func loadView() {
         super.loadView()
-        self.view = SelectDateAndHourView()
+        self.view = SchedulingView()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         screenView.configCollectionViewDelegate(delegate: self, dataSource: self)
-        
         navigationController?.navigationBar.topItem?.backButtonTitle = ""
-        navigationController?.title = "Reservar"
-        navigationController?.navigationBar.prefersLargeTitles = false
     }
 }
 
-extension SelectDateAndHourViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+extension SchedulingViewController: UICollectionViewDelegate, UICollectionViewDataSource {
    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return hairCutImage.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SelectHairCutViewCell.identifier, for: indexPath) as? SelectHairCutViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SchedulingViewCell.identifier, for: indexPath) as? SchedulingViewCell
         
         cell?.setupCell(data: hairCutImage[indexPath.row])
         

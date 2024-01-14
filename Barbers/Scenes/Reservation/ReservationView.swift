@@ -14,155 +14,91 @@ protocol ReservationViewControllerProtocol: AnyObject {
 
 class ReservationView: UIView, ViewConfigureProtocol {
     
-    weak var delegate: ReservationViewControllerProtocol?
+    //MARK: Variables
+    private weak var delegate: ReservationViewControllerProtocol?
     
-//    lazy var viewButton: UIImageView = {
-//        let view = UIImageView()
-//        view.translatesAutoresizingMaskIntoConstraints = false
-//        view.image = UIImage(named: "menu")
-//        view.contentMode = .scaleAspectFit
-//        return view
-//    }()
+    //MARK: Views
     lazy var itemButton = ItemButton()
     
-    lazy var HelloLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Hello,"
-        label.font = UIFont.systemFont(ofSize: 25, weight: .semibold)
-        label.textColor = .white
-        return label
-    }()
+    lazy var headerStackView: UIStackView = .stackView(backgroundColor: .clear,
+                                                       axis: .vertical,
+                                                       spacing: 10)
     
-    lazy var nameLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "John Doe"
-        label.font = UIFont.systemFont(ofSize: 40, weight: .semibold)
-        label.textColor = .orange
-        return label
-    }()
+    lazy var searchBar: UISearchBar = .searchBar(textColor: .white)
     
-    lazy var dividerView: UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .white
-        return view
-    }()
+    lazy var helloLabel: UILabel = .label(text: "Hello", textColor: .white, fontSize: 25, fontType: .semibold)
     
-    lazy var servicesLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Services"
-        label.textColor = .white
-        label.font = UIFont.systemFont(ofSize: 20, weight: .bold)
-        return label
-    }()
-   
-    lazy var stackView: UIStackView = {
-       let stackView = UIStackView()
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.backgroundColor = .none
-        stackView.alignment = .center
-        stackView.axis = .vertical
+    lazy var nameLabel: UILabel = .label(text: "John Doe", textColor: .orange, fontSize: 40, fontType: .semibold)
     
-        return stackView
-    }()
+    lazy var servicesLabel: UILabel = .label(text: "Services", textColor: .white, fontSize: 20, fontType: .bold)
     
-    lazy var stackViewTop: UIStackView = {
-       let stackView = UIStackView()
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.backgroundColor = .none
-        stackView.distribution = .fillEqually
-        stackView.spacing = 15
-        stackView.alignment = .fill
-        stackView.axis = .horizontal
-        
-        return stackView
-    }()
+    lazy var dividerView: UIView = .simpleView(color: .white)
     
-    lazy var stackViewBotton: UIStackView = {
-       let stackView = UIStackView()
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.backgroundColor = .none
-        stackView.distribution = .fillEqually
-        stackView.spacing = 15
-        stackView.alignment = .fill
-        stackView.axis = .horizontal
-        
-        return stackView
-    }()
+    lazy var stackView: UIStackView = .stackView(backgroundColor: .none, axis: .vertical, alignment: .center)
     
-    lazy var buttonShaving: UIButton = {
-       let buttonShaving = UIButton()
-        buttonShaving.translatesAutoresizingMaskIntoConstraints = false
-        buttonShaving.backgroundColor = .white.withAlphaComponent(0.1)
-        buttonShaving.clipsToBounds = true
-        buttonShaving.layer.cornerRadius = 5.0
-        buttonShaving.setTitle("shaving", for: .normal)
-        buttonShaving.setTitleColor(.white, for: .normal)
-        buttonShaving.titleLabel?.font = UIFont.systemFont(ofSize: 15, weight: .medium)
-        buttonShaving.contentVerticalAlignment = .bottom
-        buttonShaving.setImage(UIImage(named: "navalha"), for: .normal)
-        buttonShaving.imageView?.tintColor = .white
-        buttonShaving.imageView?.contentMode = .scaleAspectFit
-      
-        return buttonShaving
-    }()
+    lazy var stackViewTop: UIStackView = .stackView(backgroundColor: .none, axis: .horizontal, distribution: .fillEqually, alignment: .fill, spacing: 15)
     
-    lazy var buttonHairWashing: UIButton = {
-       let buttonHairWashing = UIButton()
-        buttonHairWashing.translatesAutoresizingMaskIntoConstraints = false
-        buttonHairWashing.backgroundColor = .white.withAlphaComponent(0.1)
-        buttonHairWashing.clipsToBounds = true
-        buttonHairWashing.layer.cornerRadius = 5.0
-        buttonHairWashing.setImage(UIImage(named: "secador"), for: .normal)
-        buttonHairWashing.imageView?.tintColor = .white
-        buttonHairWashing.imageView?.contentMode = .scaleAspectFit
-        return buttonHairWashing
-    }()
+    lazy var stackViewBotton: UIStackView = .stackView(backgroundColor: .none, axis: .horizontal, distribution: .fillEqually, alignment: .fill, spacing: 15)
     
-    lazy var buttonHairCare: UIButton = {
-       let buttonHairCare = UIButton()
-        buttonHairCare.translatesAutoresizingMaskIntoConstraints = false
-        buttonHairCare.backgroundColor = .white.withAlphaComponent(0.1)
-        buttonHairCare.clipsToBounds = true
-        buttonHairCare.layer.cornerRadius = 5.0
-        buttonHairCare.setImage(UIImage(named: "shampoo"), for: .normal)
-        buttonHairCare.imageView?.tintColor = .white
-        buttonHairCare.imageView?.contentMode = .scaleAspectFit
-        return buttonHairCare
-    }()
+    lazy var buttonShaving: UIButton = .button(image: "navalha",
+                                               imageColor: .white,
+                                               cornerRadius: 8,
+                                               borderColor: .cyan,
+                                               fontSize: 15,
+                                               weightFont: .medium,
+                                               titleColor: .white,
+                                               backgroundColor: .white.withAlphaComponent(0.1),
+                                               target: self,
+                                               action: #selector(buttonsTapped))
     
-    lazy var buttonBeardTrimming: UIButton = {
-       let buttonBearTrimming = UIButton()
-        buttonBearTrimming.translatesAutoresizingMaskIntoConstraints = false
-        buttonBearTrimming.backgroundColor = .white.withAlphaComponent(0.1)
-        buttonBearTrimming.clipsToBounds = true
-        buttonBearTrimming.layer.cornerRadius = 5.0
-        buttonBearTrimming.setImage(UIImage(named: "barba"), for: .normal)
-        buttonBearTrimming.imageView?.tintColor = .white
-        buttonBearTrimming.imageView?.contentMode = .scaleAspectFit
-        return buttonBearTrimming
-    }()
+    lazy var buttonHairWashing: UIButton = .button(image: "secador",
+                                                   imageColor: .white,
+                                                   cornerRadius: 8,
+                                                   borderColor: .cyan,
+                                                   fontSize: 15,
+                                                   weightFont: .medium,
+                                                   titleColor: .white,
+                                                   backgroundColor: .white.withAlphaComponent(0.1),
+                                                   target: self,
+                                                   action: #selector(buttonsTapped))
     
-    lazy var reservationButton: UIButton = {
-        let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.backgroundColor = .white
-        button.clipsToBounds = true
-        button.layer.cornerRadius = 20
-        button.setTitle("Reservation Now", for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .bold)
-        button.setTitleColor(.black, for: .normal)
-        button.addTarget(self, action: #selector(tappedButton), for: .touchUpInside)
-        return button
-    }()
+    lazy var buttonHairCare: UIButton = .button(image: "shampoo",
+                                                imageColor: .white,
+                                                cornerRadius: 8,
+                                                borderColor: .cyan,
+                                                fontSize: 15,
+                                                weightFont: .medium,
+                                                titleColor: .white,
+                                                backgroundColor: .white.withAlphaComponent(0.1),
+                                                target: self,
+                                                action: #selector(buttonsTapped))
+    
+    lazy var buttonBeardTrimming: UIButton = .button(image: "barba",
+                                                     imageColor: .white,
+                                                     cornerRadius: 8,
+                                                     borderColor: .cyan,
+                                                     fontSize: 15,
+                                                     weightFont: .medium,
+                                                     titleColor: .white,
+                                                     backgroundColor: .white.withAlphaComponent(0.1),
+                                                     target: self,
+                                                     action: #selector(buttonsTapped))
+    
+    lazy var reservationButton: UIButton = .button(title: "Reservation Now",
+                                                   cornerRadius: 20,
+                                                   borderColor: .cyan,
+                                                   fontSize: 18,
+                                                   weightFont: .bold,
+                                                   titleColor: .black,
+                                                   backgroundColor: .white,
+                                                   target: self,
+                                                   action: #selector(tappedButton))
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.configureViews()
+        configureViews()
         additionalConfig()
+        setupSearcBar()
     }
     
     required init?(coder: NSCoder) {
@@ -170,31 +106,34 @@ class ReservationView: UIView, ViewConfigureProtocol {
     }
     
     func buildHierarchy() {
-
-        addSubview(HelloLabel)
-        addSubview(nameLabel)
+        addSubview(headerStackView)
+        headerStackView.addArrangedSubview(searchBar)
+        headerStackView.addArrangedSubview(helloLabel)
+        headerStackView.addArrangedSubview(nameLabel)
+        
         addSubview(dividerView)
         addSubview(servicesLabel)
         addSubview(stackView)
+        
         stackView.addArrangedSubview(stackViewTop)
-        stackView.addArrangedSubview(stackViewBotton)
         stackViewTop.addArrangedSubview(buttonShaving)
         stackViewTop.addArrangedSubview(buttonHairWashing)
+        
+        stackView.addArrangedSubview(stackViewBotton)
         stackViewBotton.addArrangedSubview(buttonHairCare)
         stackViewBotton.addArrangedSubview(buttonBeardTrimming)
+        
         addSubview(reservationButton)
     }
     
     func setupConstraints() {
         NSLayoutConstraint.activate([
             
-            HelloLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 40),
-            HelloLabel.leadingAnchor.constraint(equalTo: servicesLabel.leadingAnchor),
+            headerStackView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 30),
+            headerStackView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 16),
+            headerStackView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -16),
             
-            nameLabel.topAnchor.constraint(equalTo: HelloLabel.bottomAnchor, constant: 8),
-            nameLabel.leadingAnchor.constraint(equalTo: servicesLabel.leadingAnchor),
-            
-            dividerView.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 8),
+            dividerView.topAnchor.constraint(equalTo: headerStackView.bottomAnchor, constant: 8),
             dividerView.leadingAnchor.constraint(equalTo: buttonShaving.leadingAnchor),
             dividerView.trailingAnchor.constraint(equalTo: buttonHairWashing.trailingAnchor),
             dividerView.heightAnchor.constraint(equalToConstant: 1),
@@ -209,7 +148,7 @@ class ReservationView: UIView, ViewConfigureProtocol {
             stackViewTop.topAnchor.constraint(equalTo: stackView.topAnchor, constant: 20),
             stackViewTop.leadingAnchor.constraint(equalTo: stackView.leadingAnchor, constant: 20),
             stackViewTop.trailingAnchor.constraint(equalTo: stackView.trailingAnchor, constant: -20),
-
+            
             stackViewBotton.leadingAnchor.constraint(equalTo: stackViewTop.leadingAnchor),
             stackViewBotton.trailingAnchor.constraint(equalTo: stackViewTop.trailingAnchor),
             stackViewBotton.bottomAnchor.constraint(equalTo: stackView.bottomAnchor, constant: -20),
@@ -230,13 +169,33 @@ class ReservationView: UIView, ViewConfigureProtocol {
         ])
     }
     
-    func setupDelegate(delegate: ReservationViewControllerProtocol) {
+    func setupDelegate(delegate: ReservationViewControllerProtocol, searchDelegate: UISearchBarDelegate) {
         self.delegate = delegate
+        self.searchBar.delegate = searchDelegate
     }
     
     @objc private func tappedButton() {
         delegate?.didTapButton()
     }
     
-    private func additionalConfig() {}
+    @objc private func buttonsTapped(sender: UIButton) {}
+    
+    private func additionalConfig() {
+        buttonShaving.imageView?.contentMode = .scaleAspectFit
+        buttonShaving.imageEdgeInsets = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
+        
+        buttonHairWashing.imageView?.contentMode = .scaleAspectFit
+        buttonHairWashing.imageEdgeInsets = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
+        
+        buttonHairCare.imageView?.contentMode = .scaleAspectFit
+        buttonHairCare.imageEdgeInsets = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
+        
+        buttonBeardTrimming.imageView?.contentMode = .scaleAspectFit
+        buttonBeardTrimming.imageEdgeInsets = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
+        
+    }
+    
+    private func setupSearcBar() {
+        searchBar.isHidden = true
+    }
 }
