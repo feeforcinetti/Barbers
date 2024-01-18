@@ -40,22 +40,10 @@ class ReservationViewController: UIViewController {
     
     private func setupNavBar() {
         navigationController?.isNavigationBarHidden = false
-    
-        let searchButton = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(self.rightBarButton))
-        searchButton.tintColor = .white
-        
-        let menuButton = UIBarButtonItem(customView: screenView.itemButton.buttonMenu)
         navigationItem.hidesBackButton = true
-        navigationItem.leftBarButtonItem = menuButton
-        navigationItem.rightBarButtonItem = searchButton
-    }
-    
-    @objc func rightBarButton() {
-        DispatchQueue.main.async {
-            UIView.animate(withDuration: 0.5, delay: 0.1, options: .curveEaseOut) {
-                self.screenView.searchBar.isHidden = !self.screenView.searchBar.isHidden
-            }
-        }
+        
+        navigationItem.leftBarButtonItem = screenView.menuButton
+        navigationItem.rightBarButtonItem = screenView.searchButton
     }
 }
 
@@ -71,4 +59,10 @@ extension ReservationViewController: ReservationViewControllerProtocol {
     }
 }
 
-extension ReservationViewController: UISearchBarDelegate {}
+extension ReservationViewController: UISearchBarDelegate {
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+    }
+    
+}

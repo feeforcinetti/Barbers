@@ -20,11 +20,17 @@ class ReservationView: UIView, ViewConfigureProtocol {
     //MARK: Views
     lazy var itemButton = ItemButton()
     
+    lazy var searchButton = UIBarButtonItem(barButtonSystemItem: .search,
+                                            target: self,
+                                            action: #selector(rightBarButton))
+    
+    lazy var menuButton = UIBarButtonItem(customView: itemButton)
+    
     lazy var headerStackView: UIStackView = .stackView(backgroundColor: .clear,
                                                        axis: .vertical,
                                                        spacing: 10)
     
-    lazy var searchBar: UISearchBar = .searchBar(textColor: .white)
+    lazy var searchBar: UISearchBar = .searchBar()
     
     lazy var helloLabel: UILabel = .label(text: "Hello", textColor: .white, fontSize: 25, fontType: .semibold)
     
@@ -98,7 +104,7 @@ class ReservationView: UIView, ViewConfigureProtocol {
         super.init(frame: frame)
         configureViews()
         additionalConfig()
-        setupSearcBar()
+        setupSearchBar()
     }
     
     required init?(coder: NSCoder) {
@@ -180,6 +186,18 @@ class ReservationView: UIView, ViewConfigureProtocol {
     
     @objc private func buttonsTapped(sender: UIButton) {}
     
+    @objc func rightBarButton() {
+        DispatchQueue.main.async {
+            UIView.animate(withDuration: 0.5, delay: 0.1, options: .curveEaseOut) {
+                self.searchBar.isHidden = !self.searchBar.isHidden
+                
+                if self.searchBar.isHidden {
+                    self.searchBar.endEditing(true)
+                }
+            }
+        }
+    }
+    
     private func additionalConfig() {
         buttonShaving.imageView?.contentMode = .scaleAspectFit
         buttonShaving.imageEdgeInsets = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
@@ -193,9 +211,11 @@ class ReservationView: UIView, ViewConfigureProtocol {
         buttonBeardTrimming.imageView?.contentMode = .scaleAspectFit
         buttonBeardTrimming.imageEdgeInsets = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
         
+        searchButton.tintColor = .white
     }
     
-    private func setupSearcBar() {
+    private func setupSearchBar() {
+        searchBar.searchTextField.backgroundColor = .white
         searchBar.isHidden = true
     }
 }

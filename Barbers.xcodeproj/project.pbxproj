@@ -8,6 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		7120B5072A66B78700C1BF30 /* ViewMakers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7120B5062A66B78700C1BF30 /* ViewMakers.swift */; };
+		712422C32B58B6E70002B282 /* CollectionViewMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712422C22B58B6E70002B282 /* CollectionViewMaker.swift */; };
+		712422C52B58B72C0002B282 /* TableViewMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712422C42B58B72C0002B282 /* TableViewMaker.swift */; };
+		712422C72B58B75A0002B282 /* LabelMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712422C62B58B75A0002B282 /* LabelMaker.swift */; };
+		712422C92B58B7680002B282 /* ImageMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712422C82B58B7680002B282 /* ImageMaker.swift */; };
+		712422CC2B58B7830002B282 /* StackViewMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712422CB2B58B7830002B282 /* StackViewMaker.swift */; };
+		712422CF2B58B80F0002B282 /* ButtonMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712422CE2B58B80F0002B282 /* ButtonMaker.swift */; };
+		712422D22B58B8650002B282 /* DatePickerMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712422D12B58B8650002B282 /* DatePickerMaker.swift */; };
+		712422D62B58B9050002B282 /* SearchMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712422D52B58B9050002B282 /* SearchMaker.swift */; };
 		71462F9327109BD200B9BAE1 /* ReservationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71462F9227109BD200B9BAE1 /* ReservationView.swift */; };
 		71462F9527109BF700B9BAE1 /* ReservationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71462F9427109BF700B9BAE1 /* ReservationViewController.swift */; };
 		714B8C9B2B48831800BF1E36 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714B8C9A2B48831800BF1E36 /* Coordinator.swift */; };
@@ -49,6 +57,14 @@
 
 /* Begin PBXFileReference section */
 		7120B5062A66B78700C1BF30 /* ViewMakers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewMakers.swift; sourceTree = "<group>"; };
+		712422C22B58B6E70002B282 /* CollectionViewMaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewMaker.swift; sourceTree = "<group>"; };
+		712422C42B58B72C0002B282 /* TableViewMaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewMaker.swift; sourceTree = "<group>"; };
+		712422C62B58B75A0002B282 /* LabelMaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelMaker.swift; sourceTree = "<group>"; };
+		712422C82B58B7680002B282 /* ImageMaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageMaker.swift; sourceTree = "<group>"; };
+		712422CB2B58B7830002B282 /* StackViewMaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackViewMaker.swift; sourceTree = "<group>"; };
+		712422CE2B58B80F0002B282 /* ButtonMaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonMaker.swift; sourceTree = "<group>"; };
+		712422D12B58B8650002B282 /* DatePickerMaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerMaker.swift; sourceTree = "<group>"; };
+		712422D52B58B9050002B282 /* SearchMaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMaker.swift; sourceTree = "<group>"; };
 		71462F9227109BD200B9BAE1 /* ReservationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationView.swift; sourceTree = "<group>"; };
 		71462F9427109BF700B9BAE1 /* ReservationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationViewController.swift; sourceTree = "<group>"; };
 		714B8C9A2B48831800BF1E36 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
@@ -102,6 +118,78 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		712422BD2B58B6880002B282 /* Collections */ = {
+			isa = PBXGroup;
+			children = (
+				712422C22B58B6E70002B282 /* CollectionViewMaker.swift */,
+			);
+			path = Collections;
+			sourceTree = "<group>";
+		};
+		712422BE2B58B6960002B282 /* Tables */ = {
+			isa = PBXGroup;
+			children = (
+				712422C42B58B72C0002B282 /* TableViewMaker.swift */,
+			);
+			path = Tables;
+			sourceTree = "<group>";
+		};
+		712422BF2B58B6A00002B282 /* Labels */ = {
+			isa = PBXGroup;
+			children = (
+				712422C62B58B75A0002B282 /* LabelMaker.swift */,
+			);
+			path = Labels;
+			sourceTree = "<group>";
+		};
+		712422C02B58B6B00002B282 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				712422C82B58B7680002B282 /* ImageMaker.swift */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
+		712422C12B58B6CD0002B282 /* Stacks */ = {
+			isa = PBXGroup;
+			children = (
+				712422CB2B58B7830002B282 /* StackViewMaker.swift */,
+			);
+			path = Stacks;
+			sourceTree = "<group>";
+		};
+		712422CD2B58B7FC0002B282 /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				712422CE2B58B80F0002B282 /* ButtonMaker.swift */,
+			);
+			path = Buttons;
+			sourceTree = "<group>";
+		};
+		712422D02B58B84F0002B282 /* DatePicker */ = {
+			isa = PBXGroup;
+			children = (
+				712422D12B58B8650002B282 /* DatePickerMaker.swift */,
+			);
+			path = DatePicker;
+			sourceTree = "<group>";
+		};
+		712422D32B58B8CA0002B282 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7120B5062A66B78700C1BF30 /* ViewMakers.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		712422D42B58B8EF0002B282 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				712422D52B58B9050002B282 /* SearchMaker.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
 		71462F9127109B8C00B9BAE1 /* Reservation */ = {
 			isa = PBXGroup;
 			children = (
@@ -124,7 +212,15 @@
 		714B8C9F2B48857C00BF1E36 /* Makers */ = {
 			isa = PBXGroup;
 			children = (
-				7120B5062A66B78700C1BF30 /* ViewMakers.swift */,
+				712422D42B58B8EF0002B282 /* Search */,
+				712422D32B58B8CA0002B282 /* Views */,
+				712422D02B58B84F0002B282 /* DatePicker */,
+				712422CD2B58B7FC0002B282 /* Buttons */,
+				712422C12B58B6CD0002B282 /* Stacks */,
+				712422C02B58B6B00002B282 /* Images */,
+				712422BF2B58B6A00002B282 /* Labels */,
+				712422BE2B58B6960002B282 /* Tables */,
+				712422BD2B58B6880002B282 /* Collections */,
 			);
 			path = Makers;
 			sourceTree = "<group>";
@@ -400,14 +496,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				712422CF2B58B80F0002B282 /* ButtonMaker.swift in Sources */,
 				715F27A32B4F19960009885A /* SchedulingViewController.swift in Sources */,
 				715F27A52B4F621C0009885A /* SchedulingViewCell.swift in Sources */,
 				71AE7C19270C91DB001CE504 /* LoginViewController.swift in Sources */,
+				712422D62B58B9050002B282 /* SearchMaker.swift in Sources */,
 				714B8CA12B48861E00BF1E36 /* MainCoordinator.swift in Sources */,
 				71AE7C46270C9516001CE504 /* ViewConfigProtocol.swift in Sources */,
 				71AE7C15270C91DB001CE504 /* AppDelegate.swift in Sources */,
+				712422C52B58B72C0002B282 /* TableViewMaker.swift in Sources */,
 				71AE7C4D270C9C7F001CE504 /* LoginView.swift in Sources */,
+				712422C32B58B6E70002B282 /* CollectionViewMaker.swift in Sources */,
 				714B8C9D2B4883E100BF1E36 /* LoginCoordinator.swift in Sources */,
+				712422CC2B58B7830002B282 /* StackViewMaker.swift in Sources */,
+				712422D22B58B8650002B282 /* DatePickerMaker.swift in Sources */,
+				712422C92B58B7680002B282 /* ImageMaker.swift in Sources */,
 				715F27A12B4F19840009885A /* SchedulingView.swift in Sources */,
 				71AE7C17270C91DB001CE504 /* SceneDelegate.swift in Sources */,
 				715F279E2B48A1F20009885A /* ReservationCoordinator.swift in Sources */,
@@ -417,6 +520,7 @@
 				71BDC40E2735B1A90038A72E /* ItemButton.swift in Sources */,
 				71462F9327109BD200B9BAE1 /* ReservationView.swift in Sources */,
 				7120B5072A66B78700C1BF30 /* ViewMakers.swift in Sources */,
+				712422C72B58B75A0002B282 /* LabelMaker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
