@@ -10,9 +10,17 @@ import UIKit
 
 protocol ReservationViewControllerProtocol: AnyObject {
     func didTapButton()
+    func buttonShavingAction(type: BeatifulService)
 }
 
-class ReservationView: UIView, ViewConfigureProtocol {
+enum BeatifulService {
+    case hairShaving
+    case hairWashing
+    case hairCare
+    case beardTriming
+}
+
+class ReservationView: UIView {
     
     //MARK: Variables
     private weak var delegate: ReservationViewControllerProtocol?
@@ -30,7 +38,7 @@ class ReservationView: UIView, ViewConfigureProtocol {
                                                        axis: .vertical,
                                                        spacing: 10)
     
-    lazy var searchBar: UISearchBar = .searchBar()
+    lazy var searchBar: UISearchBar = .searchBar(textFieldColor: .white)
     
     lazy var helloLabel: UILabel = .label(text: "Hello", textColor: .white, fontSize: 25, fontType: .semibold)
     
@@ -103,7 +111,7 @@ class ReservationView: UIView, ViewConfigureProtocol {
     override init(frame: CGRect) {
         super.init(frame: frame)
         configureViews()
-        additionalConfig()
+        configButtons()
         setupSearchBar()
     }
     
@@ -111,6 +119,73 @@ class ReservationView: UIView, ViewConfigureProtocol {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func setupDelegate(delegate: ReservationViewControllerProtocol, searchDelegate: UISearchBarDelegate) {
+        self.delegate = delegate
+        self.searchBar.delegate = searchDelegate
+    }
+    
+    @objc private func tappedButton() {
+        delegate?.didTapButton()
+    }
+    
+    @objc private func buttonsTapped(sender: UIButton) {
+        guard let service = getServiceType(sender.tag) else { return }
+        delegate?.buttonShavingAction(type: service)
+    }
+    
+    func getServiceType(_ tag: Int) -> BeatifulService? {
+        switch tag {
+        case buttonShaving.tag:
+            return .hairShaving
+        case buttonHairWashing.tag:
+            return .hairWashing
+        case buttonHairCare.tag:
+            return .hairCare
+        case buttonBeardTrimming.tag:
+            return .beardTriming
+        default:
+            return nil
+        }
+    }
+    
+    @objc func rightBarButton() {
+        DispatchQueue.main.async {
+            UIView.animate(withDuration: 0.5, delay: 0.1, options: .curveEaseOut) {
+                self.searchBar.isHidden = !self.searchBar.isHidden
+                
+                if self.searchBar.isHidden {
+                    self.searchBar.endEditing(true)
+                }
+            }
+        }
+    }
+    
+    private func configButtons() {
+        buttonShaving.imageView?.contentMode = .scaleAspectFit
+        buttonShaving.imageEdgeInsets = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
+        buttonShaving.tag = 1
+        
+        buttonHairWashing.imageView?.contentMode = .scaleAspectFit
+        buttonHairWashing.imageEdgeInsets = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
+        buttonHairWashing.tag = 2
+        
+        buttonHairCare.imageView?.contentMode = .scaleAspectFit
+        buttonHairCare.imageEdgeInsets = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
+        buttonHairCare.tag = 3
+        
+        buttonBeardTrimming.imageView?.contentMode = .scaleAspectFit
+        buttonBeardTrimming.imageEdgeInsets = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
+        buttonBeardTrimming.tag = 4
+        
+        searchButton.tintColor = .white
+    }
+    
+    private func setupSearchBar() {
+        searchBar.isHidden = true
+    }
+}
+
+extension ReservationView: ViewConfigureProtocol {
     func buildHierarchy() {
         addSubview(headerStackView)
         headerStackView.addArrangedSubview(searchBar)
@@ -173,49 +248,5 @@ class ReservationView: UIView, ViewConfigureProtocol {
             reservationButton.widthAnchor.constraint(equalToConstant: 280),
             reservationButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -30)
         ])
-    }
-    
-    func setupDelegate(delegate: ReservationViewControllerProtocol, searchDelegate: UISearchBarDelegate) {
-        self.delegate = delegate
-        self.searchBar.delegate = searchDelegate
-    }
-    
-    @objc private func tappedButton() {
-        delegate?.didTapButton()
-    }
-    
-    @objc private func buttonsTapped(sender: UIButton) {}
-    
-    @objc func rightBarButton() {
-        DispatchQueue.main.async {
-            UIView.animate(withDuration: 0.5, delay: 0.1, options: .curveEaseOut) {
-                self.searchBar.isHidden = !self.searchBar.isHidden
-                
-                if self.searchBar.isHidden {
-                    self.searchBar.endEditing(true)
-                }
-            }
-        }
-    }
-    
-    private func additionalConfig() {
-        buttonShaving.imageView?.contentMode = .scaleAspectFit
-        buttonShaving.imageEdgeInsets = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
-        
-        buttonHairWashing.imageView?.contentMode = .scaleAspectFit
-        buttonHairWashing.imageEdgeInsets = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
-        
-        buttonHairCare.imageView?.contentMode = .scaleAspectFit
-        buttonHairCare.imageEdgeInsets = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
-        
-        buttonBeardTrimming.imageView?.contentMode = .scaleAspectFit
-        buttonBeardTrimming.imageEdgeInsets = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
-        
-        searchButton.tintColor = .white
-    }
-    
-    private func setupSearchBar() {
-        searchBar.searchTextField.backgroundColor = .white
-        searchBar.isHidden = true
     }
 }

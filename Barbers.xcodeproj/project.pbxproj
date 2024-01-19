@@ -16,6 +16,7 @@
 		712422CF2B58B80F0002B282 /* ButtonMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712422CE2B58B80F0002B282 /* ButtonMaker.swift */; };
 		712422D22B58B8650002B282 /* DatePickerMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712422D12B58B8650002B282 /* DatePickerMaker.swift */; };
 		712422D62B58B9050002B282 /* SearchMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712422D52B58B9050002B282 /* SearchMaker.swift */; };
+		712422D82B59C6DC0002B282 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712422D72B59C6DC0002B282 /* Alert.swift */; };
 		71462F9327109BD200B9BAE1 /* ReservationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71462F9227109BD200B9BAE1 /* ReservationView.swift */; };
 		71462F9527109BF700B9BAE1 /* ReservationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71462F9427109BF700B9BAE1 /* ReservationViewController.swift */; };
 		714B8C9B2B48831800BF1E36 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714B8C9A2B48831800BF1E36 /* Coordinator.swift */; };
@@ -65,6 +66,7 @@
 		712422CE2B58B80F0002B282 /* ButtonMaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonMaker.swift; sourceTree = "<group>"; };
 		712422D12B58B8650002B282 /* DatePickerMaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerMaker.swift; sourceTree = "<group>"; };
 		712422D52B58B9050002B282 /* SearchMaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMaker.swift; sourceTree = "<group>"; };
+		712422D72B59C6DC0002B282 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		71462F9227109BD200B9BAE1 /* ReservationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationView.swift; sourceTree = "<group>"; };
 		71462F9427109BF700B9BAE1 /* ReservationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationViewController.swift; sourceTree = "<group>"; };
 		714B8C9A2B48831800BF1E36 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
@@ -190,6 +192,14 @@
 			path = Search;
 			sourceTree = "<group>";
 		};
+		712422D92B59FF8B0002B282 /* Alerts */ = {
+			isa = PBXGroup;
+			children = (
+				712422D72B59C6DC0002B282 /* Alert.swift */,
+			);
+			path = Alerts;
+			sourceTree = "<group>";
+		};
 		71462F9127109B8C00B9BAE1 /* Reservation */ = {
 			isa = PBXGroup;
 			children = (
@@ -212,6 +222,7 @@
 		714B8C9F2B48857C00BF1E36 /* Makers */ = {
 			isa = PBXGroup;
 			children = (
+				712422D92B59FF8B0002B282 /* Alerts */,
 				712422D42B58B8EF0002B282 /* Search */,
 				712422D32B58B8CA0002B282 /* Views */,
 				712422D02B58B84F0002B282 /* DatePicker */,
@@ -514,6 +525,7 @@
 				715F27A12B4F19840009885A /* SchedulingView.swift in Sources */,
 				71AE7C17270C91DB001CE504 /* SceneDelegate.swift in Sources */,
 				715F279E2B48A1F20009885A /* ReservationCoordinator.swift in Sources */,
+				712422D82B59C6DC0002B282 /* Alert.swift in Sources */,
 				714B8C9B2B48831800BF1E36 /* Coordinator.swift in Sources */,
 				715F27A82B4F6C090009885A /* HairCutModel.swift in Sources */,
 				71462F9527109BF700B9BAE1 /* ReservationViewController.swift in Sources */,

@@ -11,11 +11,18 @@ import Foundation
 protocol ReservationCoordinatorDelegate: AnyObject {
     func showMenu()
     func goToSelectDateAndHourScreen()
+    func showAlertController(title: String,
+                             message: String,
+                             hasTwoButtons: Bool,
+                             okButtonTitle: String,
+                             cancelButtonTitle: String?,
+                             okAction: @escaping (() -> Void),
+                             cancelAction: (() -> Void)?)
 }
 
 class ReservationViewController: UIViewController {
 
-    private unowned var screenView: ReservationView { return self.view as! ReservationView }
+    unowned var screenView: ReservationView { return self.view as! ReservationView }
     private weak var delegate: ReservationCoordinatorDelegate?
     
     init(delegate: ReservationCoordinatorDelegate) {
@@ -54,6 +61,44 @@ extension ReservationViewController: ItemButtonProtocol {
 }
 
 extension ReservationViewController: ReservationViewControllerProtocol {
+    func buttonShavingAction(type: BeatifulService) {
+        
+        switch type {
+        case .hairShaving:
+            delegate?.showAlertController(title: "Hair Shaving".uppercased(),
+                                          message: "BTN 1",
+                                          hasTwoButtons: false,
+                                          okButtonTitle: "Trocar para azul",
+                                          cancelButtonTitle: nil,
+                                          okAction: { self.screenView.backgroundColor = .blue },
+                                          cancelAction: nil)
+        case .hairWashing:
+            delegate?.showAlertController(title: "Hair Washing".uppercased(),
+                                          message: "BTN 2",
+                                          hasTwoButtons: false,
+                                          okButtonTitle: "Trocar para amarelo",
+                                          cancelButtonTitle: nil,
+                                          okAction: { self.screenView.backgroundColor = .yellow },
+                                          cancelAction: nil)
+        case .hairCare:
+            delegate?.showAlertController(title: "Hair Care".uppercased(),
+                                          message: "BTN 3",
+                                          hasTwoButtons: true,
+                                          okButtonTitle: "Trocar para laranja",
+                                          cancelButtonTitle: "Voltar para preto",
+                                          okAction: { self.screenView.backgroundColor = .orange },
+                                          cancelAction: { self.screenView.backgroundColor = .black })
+        case .beardTriming:
+            delegate?.showAlertController(title: "Beard Triming".uppercased(),
+                                          message: "BTN 4",
+                                          hasTwoButtons: true,
+                                          okButtonTitle: "Trocar para cyan",
+                                          cancelButtonTitle: "Voltar para preto",
+                                          okAction: { self.screenView.backgroundColor = .cyan },
+                                          cancelAction: { self.screenView.backgroundColor = .black })
+        }
+    }
+    
     func didTapButton() {
         delegate?.goToSelectDateAndHourScreen()
     }
@@ -64,5 +109,4 @@ extension ReservationViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
     }
-    
 }
